@@ -8,6 +8,12 @@
         <servlet-name>ServletGroupe</servlet-name>
         <servlet-class>servlet.ServletGroupe</servlet-class>
     </servlet>
+    
+    <servlet>
+        <servlet-name>ServletAccueil</servlet-name>
+        <servlet-class>servlet.ServletAccueil</servlet-class>
+    </servlet>
+    
     <servlet>
         <servlet-name>NewServlet</servlet-name>
         <servlet-class>servlet.NewServlet</servlet-class>
@@ -24,6 +30,14 @@
         <servlet-name>ServletGroupe</servlet-name>
         <url-pattern>/ServletGroupe/ajouter</url-pattern>
     </servlet-mapping>
+    
+
+    <servlet-mapping>
+        <servlet-name>ServletAccueil</servlet-name>
+        <url-pattern>/ServletAccueil/index</url-pattern>
+    </servlet-mapping>
+    
+         
     <session-config>
         <session-timeout>
             30
