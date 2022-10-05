@@ -6,6 +6,7 @@ package servlet;
 
 import dao.DaoAdmin;
 import dao.DaoGroupe;
+import dao.DaoMembre;
 import dao.Utilitaire;
 import form.FormGroupe;
 import java.io.IOException;
@@ -110,17 +111,35 @@ public class ServletGroupe extends HttpServlet {
             request.setAttribute("pMembre", lesMembres);
             this.getServletContext().getRequestDispatcher("/view/groupe/consulter.jsp" ).forward( request, response );
         }
+  
         
-        
-        if (url.equals("/normanzik/ServletGroupe/consulterMembre")){
-            
-            int idGroupe = Integer.parseInt(request.getParameter("idGroupe"));
-            Groupe leGroupe = DaoGroupe.getLeGroupe(connection, idGroupe);
-            request.setAttribute("pLeGroupe", leGroupe);
-            this.getServletContext().getRequestDispatcher("/view/groupe/lister.jsp" ).forward( request, response );
-            
+        if(url.equals("/normanzik/ServletGroupe/connexion")){
+            this.getServletContext().getRequestDispatcher("/view/groupe/connexion.jsp" ).forward( request, response );
         }
-
+        
+        if(url.equals("/normanzik/ServletGroupe/inscription")){
+            this.getServletContext().getRequestDispatcher("/view/groupe/inscription.jsp" ).forward( request, response );
+        }
+        
+        if(url.equals("/normanzik/ServletGroupe/consulterFestival")){
+            this.getServletContext().getRequestDispatcher("/view/groupe/consulterFestival.jsp" ).forward( request, response );
+        }
+        
+        if(url.equals("/normanzik/ServletGroupe/consulterGroupe")){
+            this.getServletContext().getRequestDispatcher("/view/groupe/consulterGroupe.jsp" ).forward( request, response );
+        }
+        
+        if(url.equals("/normanzik/ServletGroupe/accueil")){
+            this.getServletContext().getRequestDispatcher("/view/groupe/accueil.jsp" ).forward( request, response );
+        }
+        
+        if(url.equals("/normanzik/ServletGroupe/juryInfoGroupe")){
+            this.getServletContext().getRequestDispatcher("/view/groupe/juryInfoGroupe.jsp" ).forward( request, response );
+        }
+        
+       
+        
+   
         if(url.equals("/normanzik/ServletGroupe/ajouter"))
         {
             ArrayList<Genre> lesGenres = DaoAdmin.getLesGenres(connection);

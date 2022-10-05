@@ -24,6 +24,40 @@
         <servlet-name>ServletGroupe</servlet-name>
         <url-pattern>/ServletGroupe/ajouter</url-pattern>
     </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>ServletGroupe</servlet-name>
+        <url-pattern>/ServletGroupe/connexion</url-pattern>
+    </servlet-mapping>
+    
+        <servlet-mapping>
+        <servlet-name>ServletGroupe</servlet-name>
+        <url-pattern>/ServletGroupe/inscription</url-pattern>
+    </servlet-mapping>
+    
+        <servlet-mapping>
+        <servlet-name>ServletGroupe</servlet-name>
+        <url-pattern>/ServletGroupe/consulterFestival</url-pattern>
+    </servlet-mapping>
+    
+        <servlet-mapping>
+        <servlet-name>ServletGroupe</servlet-name>
+        <url-pattern>/ServletGroupe/consulterGroupe</url-pattern>
+    </servlet-mapping>
+    
+        <servlet-mapping>
+        <servlet-name>ServletGroupe</servlet-name>
+        <url-pattern>/ServletGroupe/accueil</url-pattern>
+    </servlet-mapping>
+    
+        <servlet-mapping>
+        <servlet-name>ServletGroupe</servlet-name>
+        <url-pattern>/ServletGroupe/juryInfoGroupe</url-pattern>
+    </servlet-mapping>
+    
+        
+    
+    
+
     <session-config>
         <session-timeout>
             30
