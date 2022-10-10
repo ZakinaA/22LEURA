@@ -20,6 +20,7 @@ public class Membre {
     private Instrument instrumentPrefere;
     private Statut statut;
     private ArrayList<Jouer> jouer;
+    private ArrayList<Utilisateur> lesUtilisateurs;
 
     public int getId() {
         return id;
@@ -107,6 +108,22 @@ public class Membre {
             jouer = new ArrayList<>();
         }
         jouer.add(unJouer);
+    }
+    
+        public ArrayList<Utilisateur> getLesUtilisateurs() {
+        return lesUtilisateurs;
+    }
+
+    public void setLesUtilisateurs(ArrayList<Utilisateur> lesUtilisateurs) {
+        this.lesUtilisateurs = lesUtilisateurs;
+    }
+    
+    
+        public void addUtilisateur (Utilisateur unUtilisateur){
+        if (lesUtilisateurs == null){
+            lesUtilisateurs = new ArrayList<>();
+        }
+        lesUtilisateurs.add(unUtilisateur);
     }
     
 }

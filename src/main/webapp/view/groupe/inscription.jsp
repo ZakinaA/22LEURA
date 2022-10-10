@@ -9,11 +9,49 @@
 <html>
     
     <head>
+        
+            <style>  /* CSS for header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #0074FF;
+    }
+
+    .header .logo {
+      font-size: 25px;
+      font-family: 'Sriracha', cursive;
+      color: #000;
+      text-decoration: none;
+      margin-left: 30px;
+    }
+
+    .nav-items {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #0074FF;
+      margin-right: 20px;
+    }
+
+    .nav-items a {
+      text-decoration: none;
+      color: #000;
+      padding: 35px 20px;
+    }</style>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inscription</title>
     </head>
     <body>
-
+          <header class="header">
+    <a href="../" class="logo">Normanzik</a>
+    <nav class="nav-items">
+      <a href="../ServletGroupe/lister">Groupe</a>
+      <a href="../ServletGroupe/festival">Festival</a>
+      <a href="../ServletConnexion/connexion">Se connecter</a>
+    </nav>
+  </header>
         
 
     <section class="vh-100" style="background-color: #eee;">
