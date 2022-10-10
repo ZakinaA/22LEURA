@@ -3,6 +3,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@page import="model.Groupe"%>
 <%@page import="model.Titre"%>
+<link rel ="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"/> 
 
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,7 @@
 <body>
 <h1>Consulter Groupe</h1>
 <br/>
+<br/>     
 
 
 <%

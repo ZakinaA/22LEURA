@@ -1,13 +1,19 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@page import="model.Groupe"%>
 <%@ page import="java.util.ArrayList" %>
+<link rel ="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"/>
 <!DOCTYPE html>
 <html>
 <head>
     <title>WebZik</title>
+  
 </head>
 <body>
-<h1>Consulter Groupe</h1>
+
+<br/>
+<br/>
+<center><h1>Consulter Groupe</h1><center/>
+<br/>
 <br/>
 
 
