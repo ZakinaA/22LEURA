@@ -30,7 +30,7 @@
         <servlet-name>ServletGroupe</servlet-name>
         <url-pattern>/ServletGroupe/ajouter</url-pattern>
     </servlet-mapping>
-    
+        
 
     <servlet-mapping>
         <servlet-name>ServletAccueil</servlet-name>
