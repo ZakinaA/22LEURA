@@ -4,6 +4,8 @@
  */
 package servlet;
 
+import dao.DaoFestival;
+import dao.DaoGroupe;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -15,6 +17,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Festival;
+import model.Groupe;
 
 /**
  *
@@ -85,8 +89,22 @@ public class ServletFestival extends HttpServlet {
         System.out.println("servlergroupe url="+url);
         
         
+        if(url.equals("/normanzik/ServletFestival/listerFestival")){
+             System.out.println("servlerfestival LISTERFESTIVAL");
+             System.out.println("servlergroupe FESTIVAL");
+            ArrayList<Festival> lesFestivals = DaoFestival.getlesFestivals(connection);
+            request.setAttribute("pLesFestivals", lesFestivals);
+            this.getServletContext().getRequestDispatcher("/view/festival/listerFestival.jsp" ).forward( request, response );
+        }
+        
+        if(url.equals("/normanzik/ServletFestival/InscritFestival")){
+            this.getServletContext().getRequestDispatcher("/view/festival/InscritFestival.jsp" ).forward( request, response );
+        }
+        
         if(url.equals("/normanzik/ServletFestival/consulterFestival")){
-             System.out.println("servlerfestival CONSULTERFESTIVAL");
+            int idFestival = Integer.parseInt(request.getParameter("idFestival"));
+            Festival leFestival = DaoFestival.getLeFestival(connection, idFestival);
+            request.setAttribute("pFestival", leFestival);
             this.getServletContext().getRequestDispatcher("/view/festival/consulterFestival.jsp" ).forward( request, response );
         }
 

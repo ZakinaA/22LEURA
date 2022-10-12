@@ -210,7 +210,7 @@
     <a href="#" class="logo">Norman'zik</a>
     <nav class="nav-items">
       <a href="ServletGroupe/lister">Groupe</a>
-      <a href="ServletFestival/consulterFestival">Festival</a>
+      <a href="ServletFestival/listerFestival">Festival</a>
       <a href="ServletConnexion/connexion">Se connecter</a>
     </nav>
   </header>
