@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3307
--- Généré le : lun. 10 oct. 2022 à 08:55
+-- Généré le : mer. 12 oct. 2022 à 06:55
 -- Version du serveur :  10.4.13-MariaDB
 -- Version de PHP : 7.3.21
 
@@ -31,7 +31,7 @@ DROP TABLE IF EXISTS `categorie`;
 CREATE TABLE IF NOT EXISTS `categorie` (
   `idCategorie` int(11) NOT NULL,
   `Libelle` varchar(50) NOT NULL,
-  CONSTRAINT `PK_categorie` PRIMARY KEY (`idCategorie`)
+  PRIMARY KEY (`idCategorie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `dispositif` (
   `idDispositif` int(11) NOT NULL AUTO_INCREMENT,
   `annee` varchar(50) DEFAULT NULL,
   `libelle` varchar(50) DEFAULT NULL,
-  CONSTRAINT `PK_dispositif` PRIMARY KEY (`idDispositif`)
+  PRIMARY KEY (`idDispositif`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `donnerconcert` (
   `idGroupe` int(11) NOT NULL AUTO_INCREMENT,
   `idLieu` int(11) NOT NULL,
   `dateConcert` date DEFAULT NULL,
-  CONSTRAINT `PK_donnerConcert` PRIMARY KEY (`idGroupe`,`idLieu`),
+  PRIMARY KEY (`idGroupe`,`idLieu`),
   KEY `FK_donneConcert_lieu` (`idLieu`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
@@ -94,6 +94,35 @@ INSERT INTO `donnerconcert` (`idGroupe`, `idLieu`, `dateConcert`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `festival`
+--
+
+DROP TABLE IF EXISTS `festival`;
+CREATE TABLE IF NOT EXISTS `festival` (
+  `idFestival` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) NOT NULL,
+  `date` varchar(255) DEFAULT NULL,
+  `lieu` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`idFestival`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `festival`
+--
+
+INSERT INTO `festival` (`idFestival`, `nom`, `date`, `lieu`) VALUES
+(1, 'Eurockeennes', '2022-02-01', 'Belfort'),
+(2, 'Hellfest', '2021-06-05', 'Clisson'),
+(3, 'Les Nuits Secrètes', '2022-04-15', 'Aulnoye-Aymeries'),
+(4, 'Main Square', '2022-06-04', 'Arras'),
+(5, 'Solidays', '2022-03-01', 'Paris'),
+(6, 'Le Cabaret Vert', '2022-01-02', 'Charleville-Mézières'),
+(7, 'Electrobeach', '2019-07-14', 'Le Barcarès'),
+(8, 'Musilac', '2019-11-14', 'Aix-les-bains');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `genremusical`
 --
 
@@ -101,7 +130,7 @@ DROP TABLE IF EXISTS `genremusical`;
 CREATE TABLE IF NOT EXISTS `genremusical` (
   `idGenre` int(11) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(50) DEFAULT NULL,
-  CONSTRAINT `PK_genremusical` PRIMARY KEY (`idGenre`)
+  PRIMARY KEY (`idGenre`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
@@ -133,11 +162,11 @@ CREATE TABLE IF NOT EXISTS `groupe` (
   `idGenre` int(11) DEFAULT NULL,
   `idDispositif` int(11) DEFAULT NULL,
   `idMembre` int(11) DEFAULT NULL,
-  CONSTRAINT `PK_groupe` PRIMARY KEY (`idGroupe`),
+  PRIMARY KEY (`idGroupe`),
   KEY `FK_groupe_genre` (`idGenre`),
   KEY `FK_groupe_dispositif` (`idDispositif`),
   KEY `FK_groupe_membre` (`idMembre`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `groupe`
@@ -159,7 +188,7 @@ DROP TABLE IF EXISTS `instrument`;
 CREATE TABLE IF NOT EXISTS `instrument` (
   `idInstrument` int(11) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(50) DEFAULT NULL,
-  CONSTRAINT `PK_instrument` PRIMARY KEY (`idInstrument`)
+  PRIMARY KEY (`idInstrument`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
@@ -186,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `jouer` (
   `idGroupe` int(11) NOT NULL,
   `idMembre` int(11) NOT NULL,
   `idInstrument` int(11) NOT NULL,
-  CONSTRAINT `PK_jouer` PRIMARY KEY (`idGroupe`,`idMembre`,`idInstrument`),
+  PRIMARY KEY (`idGroupe`,`idMembre`,`idInstrument`),
   KEY `FK_jouer_membre` (`idMembre`),
   KEY `FK_jouer_instrument` (`idInstrument`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -215,7 +244,7 @@ CREATE TABLE IF NOT EXISTS `lieuconcert` (
   `nom` varchar(50) DEFAULT NULL,
   `ville` varchar(50) DEFAULT NULL,
   `codePostal` int(11) DEFAULT NULL,
-  CONSTRAINT `PK_lieuConcert` PRIMARY KEY (`idLieu`)
+  PRIMARY KEY (`idLieu`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
@@ -239,22 +268,46 @@ CREATE TABLE IF NOT EXISTS `membre` (
   `prenom` varchar(50) DEFAULT NULL,
   `idInstrumentPref` int(11) DEFAULT NULL,
   `statut` int(11) DEFAULT NULL,
-  CONSTRAINT `PK_membre` PRIMARY KEY (`idMembre`),
+  `idUtilisateur` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idMembre`),
   KEY `FK_membre_statut` (`statut`),
-  KEY `FK_membre_instrumentPref` (`idInstrumentPref`)
+  KEY `FK_membre_instrumentPref` (`idInstrumentPref`),
+  KEY `FK_membre_utilisateur` (`idUtilisateur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `membre`
 --
 
-INSERT INTO `membre` (`idMembre`, `nom`, `prenom`, `idInstrumentPref`, `statut`) VALUES
-(1, 'Lelièvre', 'Théo', 3, 1),
-(2, 'Cahaigne', 'Nathan', 0, 2),
-(3, 'Hang', 'Thomas', 1, 1),
-(4, 'Djae', 'Arde', 5, 1),
-(5, 'Guilbert', 'Thomas', 6, 1),
-(6, 'Mukengeshayi', 'Seth', 2, 2);
+INSERT INTO `membre` (`idMembre`, `nom`, `prenom`, `idInstrumentPref`, `statut`, `idUtilisateur`) VALUES
+(1, 'Lelièvre', 'Théo', 3, 1, 1),
+(2, 'Cahaigne', 'Nathan', 0, 2, 2),
+(3, 'Hang', 'Thomas', 1, 1, 3),
+(4, 'Djae', 'Arde', 5, 1, 4),
+(5, 'Guilbert', 'Thomas', 6, 1, 5),
+(6, 'Mukengeshayi', 'Seth', 2, 2, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `participerfestival`
+--
+
+DROP TABLE IF EXISTS `participerfestival`;
+CREATE TABLE IF NOT EXISTS `participerfestival` (
+  `festival` int(11) NOT NULL,
+  `groupe` int(15) NOT NULL,
+  PRIMARY KEY (`festival`,`groupe`),
+  KEY `FK_participerFestival_festival` (`festival`),
+  KEY `FK_participerFestival_groupe` (`groupe`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `participerfestival`
+--
+
+INSERT INTO `participerfestival` (`festival`, `groupe`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -266,7 +319,7 @@ DROP TABLE IF EXISTS `statut`;
 CREATE TABLE IF NOT EXISTS `statut` (
   `idStatut` int(11) NOT NULL AUTO_INCREMENT,
   `libellestatut` varchar(50) DEFAULT NULL,
-  CONSTRAINT `PK_statut` PRIMARY KEY (`idStatut`)
+  PRIMARY KEY (`idStatut`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
@@ -291,7 +344,7 @@ CREATE TABLE IF NOT EXISTS `titre` (
   `intitule` varchar(50) DEFAULT NULL,
   `duree` time DEFAULT NULL,
   `lienURL` varchar(100) DEFAULT NULL,
-  CONSTRAINT `PK_titre` PRIMARY KEY (`idGroupe`,`numero`)
+  PRIMARY KEY (`idGroupe`,`numero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -314,14 +367,12 @@ INSERT INTO `titre` (`idGroupe`, `numero`, `intitule`, `duree`, `lienURL`) VALUE
 
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `idUtilisateur` int(11) AUTO_INCREMENT NOT NULL,
+  `idUtilisateur` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `categorie` int(11),
-  `membre` int(11),
-  CONSTRAINT `PK_utilisateur` PRIMARY KEY (`idUtilisateur`),
-  KEY `FK_utilisateur_categorie` (`categorie`),
-  KEY`FK_utilisateur_membre` (`membre`)
+  `categorie` int(11) NOT NULL,
+  PRIMARY KEY (`idUtilisateur`),
+  KEY `FK_utilisateur_categorie` (`categorie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -335,39 +386,6 @@ INSERT INTO `utilisateur` (`idUtilisateur`, `username`, `password`, `categorie`)
 (4, 'ardeldjae', 'mparde', 1),
 (5, 'thomasguilbert', 'lefloorballccool', 3),
 (6, 'sethseth', 'mp77', 2);
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `festival`
---
-
-drop table if exists `festival`;
-create table if not exists `festival` (
-  `idFestival` int(11) NOT NULL,
-  `nom` varchar(50) not null,
-  `date` varchar(8),
-  `lieu` varchar (50),
-  CONSTRAINT `PK_participerFestival` PRIMARY KEY (`idFestival`)
- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
- -- --------------------------------------------------------
-
---
--- Structure de la table `ParticiperFestival`
---
-
-drop table if exists `participerFestival`;
-create table if not exists `participerFestival`(
-  `festival` int(11) not null,
-  `groupe` int(15) not null,
-  CONSTRAINT `PK_participerFestival` PRIMARY KEY (`festival`,`groupe`),
-  KEY `FK_participerFestival_festival` (`festival`),
-  KEY `FK_participerFestival_groupe` (`groupe`)
-)ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 --
 -- Contraintes pour les tables déchargées
@@ -401,27 +419,15 @@ ALTER TABLE `jouer`
 --
 ALTER TABLE `membre`
   ADD CONSTRAINT `FK_membre_instrumentPref` FOREIGN KEY (`idInstrumentPref`) REFERENCES `instrument` (`idInstrument`),
-  ADD CONSTRAINT `FK_membre_statut` FOREIGN KEY (`statut`) REFERENCES `statut` (`idStatut`);
---
--- Contraintes pour la table `titre`
---
-ALTER TABLE `titre`
-  ADD CONSTRAINT `FK_titre_groupe` FOREIGN KEY (`idGroupe`) REFERENCES `groupe` (`idGroupe`);
+  ADD CONSTRAINT `FK_membre_statut` FOREIGN KEY (`statut`) REFERENCES `statut` (`idStatut`),
+  ADD CONSTRAINT `FK_membre_utilisateur` FOREIGN KEY (`idUtilisateur`) REFERENCES `utilisateur` (`idUtilisateur`);
 
 --
 -- Contraintes pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  ADD CONSTRAINT `FK_utilisateur_categorie` FOREIGN KEY (`categorie`) REFERENCES `categorie` (`idCategorie`),
-  ADD CONSTRAINT `FK_utilisateur_membre` FOREIGN KEY (`membre`) REFERENCES `membre` (`idMembre`);
-
---
--- Contraintes pour la table `participerFestival`
---
-ALTER TABLE `participerFestival`
-  ADD CONSTRAINT `FK_participerFestival_festival` FOREIGN KEY (`festival`) REFERENCES `festival`(`idFestival`),
-  ADD CONSTRAINT `FK_participerFestival_groupe` FOREIGN KEY (`groupe`) REFERENCES `groupe`(`idGroupe`);
-
+  ADD CONSTRAINT `FK_utilisateur_categorie` FOREIGN KEY (`categorie`) REFERENCES `categorie` (`idCategorie`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
