@@ -11,56 +11,75 @@
     <title>WebZik</title>
 </head>
 <body>
-<h1>Consulter Groupe</h1>
+<center><h1>Consulter Groupe</h1><center/>
 <br/>
-<br/>     
+<br/> 
 
+    <table  class="table table-bordered table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>NumeroGroupe</th>
+                <th>Nom du groupe</th>
+                <th>Genre</th>
+                <th>Date de création</th>
+                <th>Numéro de téléphone</th>
+                <th>Mail </th>
+                <th>Lieu de répétition</th>
+                <th>Dispositif </th>
+                <th>Membre Contact </th>
+                
+            </tr>
+        </thead>
+        
+        <tbody>
+        <tr>
 
 <%
     Groupe unGroupe = (Groupe)request.getAttribute("pGroupe");
 %>
+
 <%
 
-    out.println("<p> ID du groupe => ");
+    out.println("<td>");
     out.println(unGroupe.getId());
     out.println("<br/> <br/>");
     
-    out.println("Nom du groupe => ");
+    out.println("<td>");
     out.println(unGroupe.getNom());
     out.println("<br/> <br/>");
     
-    out.println("Genre => ");
+    out.println("<td>");
     out.println(unGroupe.getGenre().getLibelle());
     out.println("<br/> <br/>");
 
-    out.println("Date de création => ");
+    out.println("<td>");
     out.println(unGroupe.getDateCreation());
     out.println("<br/> <br/>");
     
-    out.println("Numéro de téléphone => ");
+    out.println("<td>");
     out.println(unGroupe.getTelephone());
     out.println("<br/> <br/>");
 
-    out.println("Mail => ");
+    out.println("<td>");
     out.println(unGroupe.getMelSiteWeb());
     out.println("<br/> <br/>");
     
-    out.println("Lieu de répétition => ");
+    out.println("<td>");
     out.println(unGroupe.getLieurepetition());
     out.println("<br/> <br/>");
   
-    out.println("Dispositif => ");
+    out.println("<td>");
     out.println(unGroupe.getLeDispositif().getLibelle());
     out.println("<br/> <br/>");
 
-    out.println("Membre Contact => ");
+    out.println("<td>");
     out.println(unGroupe.getContact().getNom() + " " + unGroupe.getContact().getPrenom());
     out.println("</p> <br/>");
     
 
 %>
 
-
+    </table>
 <%
 ArrayList<Membre> lesMembres = (ArrayList)request.getAttribute("pMembre");
 %>
