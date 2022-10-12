@@ -7,8 +7,10 @@ package servlet;
 import dao.DaoAdmin;
 import dao.DaoGroupe;
 import dao.DaoMembre;
+import dao.DaoUtilisateur;
 import dao.Utilitaire;
 import form.FormGroupe;
+import form.FormUtilisateur;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -23,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Genre;
 import model.Groupe;
 import model.Membre;
+import model.Utilisateur;
 
 /**
  *
@@ -66,10 +69,10 @@ public class ServletConnexion extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletGroupe</title>");            
+            out.println("<title>Servlet ServletConnexion</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServletGroupe at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServletConnexion at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -103,18 +106,20 @@ public class ServletConnexion extends HttpServlet {
 
         // Affichage du groupe selectionné (depuis la fonctionnalité lister)
         
+    
+        
+        if(url.equals("/normanzik/ServletConnexion/inscription")){            
+            System.out.println("servlergroupe Inscription");
+            ArrayList<Utilisateur> lesUtilisateurs = DaoUtilisateur.getLesUtilisateurs(connection);
+            request.setAttribute("pLesUtilisateurs", lesUtilisateurs);
+            this.getServletContext().getRequestDispatcher("/view/connexion/inscription.jsp" ).forward( request, response );
+        } 
+        
+               
+  
         if(url.equals("/normanzik/ServletConnexion/connexion")){
             this.getServletContext().getRequestDispatcher("/view/connexion/connexion.jsp" ).forward( request, response );
         }
-        
-               
-        if(url.equals("/normanzik/ServletConnexion/inscription")){
-            this.getServletContext().getRequestDispatcher("/view/connexion/inscription.jsp" ).forward( request, response );
-        }
-        
-        /*if(url.equals("/normanzik/ServletConnexion/login")){
-            this.getServletContext().getRequestDispatcher("/view/groupe/login.jsp" ).forward( request, response );
-        }*/
         
         
 
@@ -132,6 +137,40 @@ public class ServletConnexion extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        
+        FormUtilisateur form = new FormUtilisateur();
+
+        /* Appel au traitement et à la validation de la requête, et récupération de l'objet en résultant */
+        Utilisateur leUtilisateurSaisi = form.ajouterUtilisateur(request);
+
+        /* Stockage du formulaire et de l'objet dans l'objet request */
+        request.setAttribute( "form", form );
+        request.setAttribute( "pUtilisateur", leUtilisateurSaisi );
+
+        if (form.getErreurs().isEmpty()){
+            // Il n'y a pas eu d'erreurs de saisie, donc on renvoie la vue affichant les infos du groupe
+            Utilisateur utilisateurAjoute = DaoUtilisateur.ajouterUtilisateur(connection, leUtilisateurSaisi);
+            
+            if (utilisateurAjoute != null ){
+                request.setAttribute("pUtilisateur", utilisateurAjoute);
+
+                this.getServletContext().getRequestDispatcher("/view/connexion/connexion.jsp" ).forward( request, response );
+            }
+            else
+            {
+                // Cas où l'insertion en bdd a échoué
+                //On renvoie vers le formulaire
+
+                System.out.println("le groupe est null en bdd- echec en bdd");
+                this.getServletContext().getRequestDispatcher("/index.jsp" ).forward( request, response );
+            }
+        }
+        else
+        {
+
+            // il y a des erreurs de saisie. On réaffiche le formulaire avec des messages d'erreurs
+         
+            this.getServletContext().getRequestDispatcher("/view/connexion/inscription.jsp" ).forward( request, response );
+        }
     }
 
     //fermeture des ressources

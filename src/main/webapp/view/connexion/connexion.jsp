@@ -8,57 +8,11 @@
 <!DOCTYPE html>
 <html>
     
-    
-        <head>
-            
-            
-            
-    <style>  /* CSS for header */
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #0074FF;
-    }
-
-    .header .logo {
-      font-size: 25px;
-      font-family: 'Sriracha', cursive;
-      color: #fff;
-      text-decoration: none;
-      margin-left: 30px;
-    }
-
-    .nav-items {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      background-color: #0074FF;
-      margin-right: 20px;
-    }
-
-    .nav-items a {
-      text-decoration: none;
-      color: #fff;
-      padding: 35px 20px;
-    }</style>
-    
-    
-    
-
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Connexion</title>
     </head>
     <body>
-        
-          <header class="header">
-    <a href="../" class="logo">Norman'zik</a>
-    <nav class="nav-items">
-      <a href="../ServletGroupe/lister">Groupe</a>
-      <a href="../ServletFestival/consulterFestival">Festival</a>
-      <a href="../ServletConnexion/connexion">Se connecter</a>
-    </nav>
-  </header>
 
         <div align="center" class="body">
 
@@ -67,7 +21,7 @@
     <div class="row d-flex justify-content-center align-items-center h-100">
      
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-      
+        <form>
             <center>
           <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
             <p class="lead fw-normal mb-0 me-3">Connexion</p>
@@ -87,11 +41,11 @@
           </div>
             <br/>
 
-       <form action ="login.jsp" method="POST">
+     
 
           <!-- Email input -->
           <div class="form-outline mb-4">
-            <input type="text" name="username" class="form-control form-control-lg"
+            <input type="email" id="form3Example3" class="form-control form-control-lg"
               placeholder="Entrez le Pseudo" />
             
           </div>
@@ -100,7 +54,7 @@
           <div class="form-outline mb-3">
               
             
-            <input type="password" name="password" class="form-control form-control-lg"
+            <input type="password" id="form3Example4" class="form-control form-control-lg"
               placeholder="Entrez le mot de passe" />
             
           </div>

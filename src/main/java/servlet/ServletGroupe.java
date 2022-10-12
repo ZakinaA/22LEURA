@@ -113,17 +113,9 @@ public class ServletGroupe extends HttpServlet {
         }
   
         
-        if(url.equals("/normanzik/ServletGroupe/connexion")){
-            this.getServletContext().getRequestDispatcher("/view/groupe/connexion.jsp" ).forward( request, response );
-        }
+
         
-        if(url.equals("/normanzik/ServletGroupe/inscription")){
-            this.getServletContext().getRequestDispatcher("/view/groupe/inscription.jsp" ).forward( request, response );
-        }
-        
-        if(url.equals("/normanzik/ServletGroupe/consulterFestival")){
-            this.getServletContext().getRequestDispatcher("/view/groupe/consulterFestival.jsp" ).forward( request, response );
-        }
+
         
         if(url.equals("/normanzik/ServletGroupe/consulterGroupe")){
             this.getServletContext().getRequestDispatcher("/view/groupe/consulterGroupe.jsp" ).forward( request, response );

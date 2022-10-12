@@ -8,16 +8,28 @@
         <servlet-name>ServletGroupe</servlet-name>
         <servlet-class>servlet.ServletGroupe</servlet-class>
     </servlet>
+        <servlet>
+        <servlet-name>ServletConnexion</servlet-name>
+        <servlet-class>servlet.ServletConnexion</servlet-class>
+    </servlet>
     
     <servlet>
         <servlet-name>ServletAccueil</servlet-name>
         <servlet-class>servlet.ServletAccueil</servlet-class>
     </servlet>
     
+    
     <servlet>
         <servlet-name>NewServlet</servlet-name>
         <servlet-class>servlet.NewServlet</servlet-class>
     </servlet>
+    
+    
+    
+    
+    
+    
+    
     <servlet-mapping>
         <servlet-name>ServletGroupe</servlet-name>
         <url-pattern>/ServletGroupe/consulter</url-pattern>
@@ -30,6 +42,16 @@
         <servlet-name>ServletGroupe</servlet-name>
         <url-pattern>/ServletGroupe/ajouter</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletConnexion</servlet-name>
+        <url-pattern>/ServletConnexion/connexion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletConnexion</servlet-name>
+        <url-pattern>/ServletConnexion/inscription</url-pattern>
+    </servlet-mapping>
+    
+    
         
 
     <servlet-mapping>

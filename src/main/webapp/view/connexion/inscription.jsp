@@ -3,6 +3,7 @@
     Created on : 3 oct. 2022, 13:24:45
     Author     : sio2
 --%>
+<%@page import="form.FormUtilisateur"%>
 <link rel ="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"/> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
     
     <head>
         
-    <style>  /* CSS for header */
+            <style>  /* CSS for header */
     .header {
       display: flex;
       justify-content: space-between;
@@ -21,7 +22,7 @@
     .header .logo {
       font-size: 25px;
       font-family: 'Sriracha', cursive;
-      color: #fff;
+      color: #000;
       text-decoration: none;
       margin-left: 30px;
     }
@@ -36,15 +37,16 @@
 
     .nav-items a {
       text-decoration: none;
-      color: #fff;
+      color: #000;
       padding: 35px 20px;
     }</style>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inscription</title>
     </head>
     <body>
           <header class="header">
-    <a href="../" class="logo">Norman'zik</a>
+    <a href="../" class="logo">Normanzik</a>
     <nav class="nav-items">
       <a href="../ServletGroupe/lister">Groupe</a>
       <a href="../ServletGroupe/festival">Festival</a>
@@ -52,6 +54,8 @@
     </nav>
   </header>
         
+
+    <body>
 
     <section class="vh-100" style="background-color: #eee;">
   <div class="container h-100">
@@ -64,60 +68,32 @@
 
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Inscription</p>
 
-                <form class="mx-1 mx-md-4">
-
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <label class="form-label" for="form3Example1c">Pseudo :</label>
-                      <input type="text" id="form3Example1c" class="form-control" />
-                      
-                    </div>
-                  </div>
-
-                  
-
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <label class="form-label" for="form3Example4c">Mot de Passe :</label>
-                      <input type="password" id="form3Example4c" class="form-control" />
-                      
-                    </div>
-                  </div>
-
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <label class="form-label" for="form3Example4cd">Répétez votre mot de passe :</label>
-                      <input type="password" id="form3Example4cd" class="form-control" />
-                      
-                    </div>
-                  </div>
+<%
+    //Client client=(Client)request.getAttribute("client");
+    FormUtilisateur form = (FormUtilisateur)request.getAttribute("form");
+%>
 
 
+<center>
+<form class="form-inline" action="inscription" method="POST">
+    <label for="username">Pseudo : </label>
+    <input id="username" type="text" name="username"  size="15" maxlength="15">
+    <span style="color: blue;">${form.erreurs['username']}</span>
+    <br />
+    </br>
+   
 
-                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="button" class="btn btn-primary btn-lg">S'inscrire</button>
-                  </div>
+    <label for="password">Mot de passe : </label>
+    <input id="password"  type="password"  name="password" size="15" maxlength="30">
+    <span style="color: blue;">${form.erreurs['password']}</span>
+    </br>
+    </br>
 
-                </form>
+       </center>
 
-              </div>
-             
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-    
-
-</section>
-    
-</div>
-
+    <center>
+    <input type="submit" name="valider" id="valider" value="Valider"/>
+    <center/>
+</form>
 </body>
 </html>
