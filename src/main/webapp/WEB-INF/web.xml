@@ -3,99 +3,84 @@
     <listener>
         <listener-class>dao.InitConnexion</listener-class>
     </listener>
-    
     <servlet>
         <servlet-name>NewServlet</servlet-name>
         <servlet-class>servlet.NewServlet</servlet-class>
     </servlet>
-    
     <!-- Servlet Groupe -->
     <servlet>
         <servlet-name>ServletGroupe</servlet-name>
         <servlet-class>servlet.ServletGroupe</servlet-class>
     </servlet>
-    
     <!-- Servlet Accueil -->
     <servlet>
         <servlet-name>ServletAccueil</servlet-name>
         <servlet-class>servlet.ServletAccueil</servlet-class>
     </servlet>
-    
     <!-- Servlet festival -->
     <servlet>
         <servlet-name>ServletFestival</servlet-name>
         <servlet-class>servlet.ServletFestival</servlet-class>
     </servlet>
-    
-    
-    
     <!-- Servlet connexion -->
-    
     <servlet>
         <servlet-name>ServletConnexion</servlet-name>
         <servlet-class>servlet.ServletConnexion</servlet-class>
     </servlet>
     
+    <!-- Servlet Concert -->
+     <servlet>
+        <servlet-name>ServletConcert</servlet-name>
+        <servlet-class>servlet.ServletConcert</servlet-class>
+    </servlet>
     
     <!-- pages servlet groupe -->
-
+   
     <servlet-mapping>
         <servlet-name>ServletGroupe</servlet-name>
         <url-pattern>/ServletGroupe/consulter</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet-mapping>
         <servlet-name>ServletGroupe</servlet-name>
         <url-pattern>/ServletGroupe/lister</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet-mapping>
         <servlet-name>ServletGroupe</servlet-name>
         <url-pattern>/ServletGroupe/ajouter</url-pattern>
     </servlet-mapping>
-    
-    
     <!-- pages servlet accueil -->
     <servlet-mapping>
         <servlet-name>ServletAccueil</servlet-name>
         <url-pattern>/ServletAccueil/index</url-pattern>
     </servlet-mapping>
-
-    
-    
     <!-- pages servlet festival -->
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ServletFestival</servlet-name>
         <url-pattern>/ServletFestival/listerFestival</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>ServletFestival</servlet-name>
         <url-pattern>/ServletFestival/InscritFestival</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>ServletFestival</servlet-name>
         <url-pattern>/ServletFestival/consulterFestival</url-pattern>
     </servlet-mapping>
-    
-    
-    
-    
     <!-- pages servlet connexion -->
-
     <servlet-mapping>
         <servlet-name>ServletConnexion</servlet-name>
         <url-pattern>/ServletConnexion/connexion</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>ServletConnexion</servlet-name>
         <url-pattern>/ServletConnexion/inscription</url-pattern>
     </servlet-mapping>
     
+   <!-- pages servlet Concert -->
+        <servlet-mapping>
+        <servlet-name>ServletConcert</servlet-name>
+        <url-pattern>/ServletConcert/listerConcert</url-pattern>
+    </servlet-mapping>
     
     <session-config>
         <session-timeout>

@@ -5,12 +5,14 @@
 package dao;
 
 
+import static dao.DaoGroupe.rs;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Festival;
+import model.Genre;
 import model.Groupe;
 
 
@@ -66,7 +68,7 @@ public class DaoFestival {
         try
         {
             //preparation de la requete
-            requete=connection.prepareStatement("select * from festival left join groupe on groupe.idGroupe = groupe.idGroupe where groupe.idGroupe");
+            requete=connection.prepareStatement("SELECT `idGroupe`, `nom` FROM `groupe` WHERE idGenre = ? ");
             requete.setInt(1, idFestival);
            /* System.out.println("Requete" + requete); */
 
@@ -76,8 +78,7 @@ public class DaoFestival {
             //On hydrate l'objet métier Groupe et sa relation Genre avec les résultats de la requête
             if ( rs.next() ) {
 
-                
-                
+
                 leFestival.setIdFestival(rs.getInt("festival.idFestival"));
                 leFestival.setNom(rs.getString("festival.nom"));
                 leFestival.setDateFestival(rs.getString("festival.datefestival"));
@@ -93,7 +94,9 @@ public class DaoFestival {
                 leGroupe.setLieurepetition(rs.getString("groupe.lieuRepetition"));
 
 
-                //leFestival.setGroupe(leGroupe);
+                //leFestival.setleGroupe(leGroupe);
+                //leFestival.setleGroupe(DaoGroupe.getLesMembresGroupe(connection, idFestival));
+                
 
             }
         }
@@ -111,7 +114,7 @@ public class DaoFestival {
         ArrayList<Festival> lesFestivals = new ArrayList<Festival>();
         
         try{
-            requete = connection.prepareStatement("select * from festival left join groupe on festival.idGroupe = groupe.idGroupe");
+            requete = connection.prepareStatement("select * from participerfestival");
             requete.setInt(1, idFestival);
             
             rs = requete.executeQuery();
@@ -133,9 +136,13 @@ public class DaoFestival {
                 leGroupe.setMelSiteWeb(rs.getString("groupe.melSiteWeb"));
                 leGroupe.setLieurepetition(rs.getString("groupe.lieuRepetition"));
                 
-               
-                //leFestival.setGroupe(leGroupe);
+                Genre leGenre = new Genre();
+                leGenre.setId(rs.getInt("genremusical.idGenre"));
+                leGenre.setLibelle(rs.getString("genremusical.libelle"));
+                
+
                 leFestival.addGroupe(leGroupe);
+                lesFestivals.add(leFestival);
             }
             
         }

@@ -4,8 +4,7 @@
  */
 package servlet;
 
-import dao.DaoFestival;
-import dao.DaoGroupe;
+import dao.DaoConcert;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -17,14 +16,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Festival;
-import model.Groupe;
+import model.Concert;
+import static test.ConnexionBdd.connection;
 
 /**
  *
  * @author sio2
  */
-public class ServletFestival extends HttpServlet {
+public class ServletConcert extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,10 +33,7 @@ public class ServletFestival extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * Connection connection ;
-    static PreparedStatement requete=null;
-    static ResultSet rs=null;
-    */
+     */
     
     Connection connection ;
     static PreparedStatement requete=null;
@@ -51,9 +47,8 @@ public class ServletFestival extends HttpServlet {
         connection=(Connection)servletContext.getAttribute("connection");
         
     }
-    
-
-        protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+   
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
@@ -61,10 +56,10 @@ public class ServletFestival extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletFestival</title>");            
+            out.println("<title>Servlet ServletConcert</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServletFestival at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServletConcert at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -82,32 +77,21 @@ public class ServletFestival extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
+       // processRequest(request, response);
     
-        String url = request.getRequestURI();
+    
+    String url = request.getRequestURI();
         
-        System.out.println("servlerfestival url="+url);
+        System.out.println("servlerconcert url="+url);
         
         
-        if(url.equals("/normanzik/ServletFestival/listerFestival")){
-             System.out.println("servlerfestival LISTERFESTIVAL");
-             System.out.println("servlergroupe FESTIVAL");
-            ArrayList<Festival> lesFestivals = DaoFestival.getlesFestivals(connection);
-            request.setAttribute("pLesFestivals", lesFestivals);
-            this.getServletContext().getRequestDispatcher("/view/festival/listerFestival.jsp" ).forward( request, response );
+        if(url.equals("/normanzik/ServletConcert/listerConcert")){
+             System.out.println("servlerconcert LISTERCONCERT");
+             System.out.println("servlerconcert CONCERT");
+            ArrayList<Concert> lesConcerts = DaoConcert.getLesConcerts(connection);
+            request.setAttribute("pLesConcerts", lesConcerts);
+            this.getServletContext().getRequestDispatcher("/view/Concert/listerConcert.jsp" ).forward( request, response );
         }
-        
-        if(url.equals("/normanzik/ServletFestival/InscritFestival")){
-            this.getServletContext().getRequestDispatcher("/view/festival/InscritFestival.jsp" ).forward( request, response );
-        }
-        
-        if(url.equals("/normanzik/ServletFestival/consulterFestival")){
-            int idFestival = Integer.parseInt(request.getParameter("idFestival"));
-            Festival leFestival = DaoFestival.getLeFestival(connection, idFestival);
-            request.setAttribute("pLesFestival", leFestival);
-            this.getServletContext().getRequestDispatcher("/view/festival/consulterFestival.jsp" ).forward( request, response );
-        }
-
     }
 
     /**
@@ -122,9 +106,6 @@ public class ServletFestival extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    
-    
-    
     }
 
     /**
