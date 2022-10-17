@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3307
--- Généré le : mer. 12 oct. 2022 à 06:55
+-- Généré le : lun. 17 oct. 2022 à 09:44
 -- Version du serveur :  10.4.13-MariaDB
 -- Version de PHP : 7.3.21
 
@@ -367,25 +367,35 @@ INSERT INTO `titre` (`idGroupe`, `numero`, `intitule`, `duree`, `lienURL`) VALUE
 
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `idUtilisateur` int(11) NOT NULL,
+  `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(30) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `categorie` int(11) NOT NULL,
+  `mail` varchar(100) NOT NULL,
+  `tel` varchar(15) NOT NULL,
+  `rue` varchar(50) NOT NULL,
+  `ville` varchar(50) NOT NULL,
+  `cp` varchar(10) NOT NULL,
+  `categorie` int(11) DEFAULT NULL,
   PRIMARY KEY (`idUtilisateur`),
   KEY `FK_utilisateur_categorie` (`categorie`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`idUtilisateur`, `username`, `password`, `categorie`) VALUES
-(1, 'tlelievre', 'mptheolebogoss', 1),
-(2, 'nathandu14', 'mpnathanlefou', 1),
-(3, 'hangthomas', 'mpthomas', 1),
-(4, 'ardeldjae', 'mparde', 1),
-(5, 'thomasguilbert', 'lefloorballccool', 3),
-(6, 'sethseth', 'mp77', 2);
+INSERT INTO `utilisateur` (`idUtilisateur`, `username`, `password`, `mail`, `tel`, `rue`, `ville`, `cp`, `categorie`) VALUES
+(1, 'tlelievre', 'mptheolebogoss', 'theorrible@gmail.com', '0658419635', '41 rue des potiers', 'Caen', '14000', 1),
+(2, 'nathandu14', 'mpnathanlefou', 'nathanpa@gmail.com', '0689895874', '32 rue des boulay', 'Caen', '14000', 1),
+(3, 'hangthomas', 'mpthomas', 'totogro@gmail.com', '0658471425', '1 avenue jeanjean', 'Bretteville l\'orgueilleuse', '14740', 1),
+(4, 'ardeldjae', 'mparde', 'samarchbi1@gmail.com', '0632211445', '6 rue du rat', 'Argences', '14370', 1),
+(5, 'thomasguilbert', 'lefloorballccool', 'saladethomasoignon@gmail.com', '0688887744', '89 rue ecuillere ', 'Verson', '14790', 3),
+(6, 'sethseth', 'mp77', '7seth7@gmail.com', '0645812324', '77 rue des set', 'Caen', '14000', 2),
+(17, 'aaaaa', 'aaaaaaaaaaaa', '', '0', '', '', '0', 2),
+(18, 'aaaaa', 'aaaaaaaaaaa', '', '0', '', '', '0', 2),
+(19, 'linda', '1234567890123456789', '', '0', '', '', '0', 2),
+(20, 'soso', 'aaaaaaaaaaaaaaa', 'jesaispas@gmail.com', '0615264859', '38 rue des ptit poney', '14790', 'Verson', 2),
+(21, 'soso', 'aaaaaaaaaaaaaaa', 'jesaispas@gmail.com', '0615264859', '38 rue des ptit poney', '14790', 'Verson', 2);
 
 --
 -- Contraintes pour les tables déchargées
