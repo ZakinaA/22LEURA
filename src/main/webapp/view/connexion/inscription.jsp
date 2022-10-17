@@ -22,7 +22,7 @@
     .header .logo {
       font-size: 25px;
       font-family: 'Sriracha', cursive;
-      color: #000;
+      color: #fff;
       text-decoration: none;
       margin-left: 30px;
     }
@@ -37,7 +37,7 @@
 
     .nav-items a {
       text-decoration: none;
-      color: #000;
+      color: #fff;
       padding: 35px 20px;
     }</style>
         
@@ -75,20 +75,60 @@
 
 
 <center>
-<form class="form-inline" action="inscription" method="POST">
+<form class="form-inline" action="connexion" method="POST">
     <label for="username">Pseudo : </label>
-    <input id="username" type="text" name="username"  size="15" maxlength="15">
+    <br />
+    <input id="username" type="text" name="username"  size="30" maxlength="30" placeholder="Entrez votre pseudo">
     <span style="color: blue;">${form.erreurs['username']}</span>
     <br />
     </br>
    
 
     <label for="password">Mot de passe : </label>
-    <input id="password"  type="password"  name="password" size="15" maxlength="30">
+    <br />
+    <input id="password"  type="password"  name="password" size="30" maxlength="30" placeholder="Mot de passe">
+    <br />
+    <small id="password" class="form-text text-muted">Au moins 8 caractères</small>
     <span style="color: blue;">${form.erreurs['password']}</span>
     </br>
     </br>
 
+        <label for="mail">mail : </label>
+        <br />
+    <input id="mail"  type="mail"  name="mail" size="30" maxlength="50" placeholder="Entrez votre adresse mail">
+    <span style="color: blue;">${form.erreurs['mail']}</span>
+    </br>
+    </br>
+    
+        <label for="tel">telephone: </label>
+        <br />
+    <input id="tel"  type="text"  name="tel" size="30" maxlength="30" placeholder="Entrez votre numero de telephone">
+    <span style="color: blue;">${form.erreurs['tel']}</span>
+    </br>
+    </br>
+    
+        <label for="rue">rue: </label>
+        <br />
+    <input id="rue"  type="text"  name="rue" size="30" maxlength="50" placeholder="Rue">
+    <span style="color: blue;">${form.erreurs['rue']}</span>
+    </br>
+    </br>
+    
+        <label for="ville">Ville: </label>
+        <br />
+    <input id="ville"  type="text"  name="ville" size="30" maxlength="50" placeholder="Ville">
+    <span style="color: blue;">${form.erreurs['ville']}</span>
+    </br>
+    </br>
+    
+        <label for="cp">Code postal: </label>
+        <br />
+    <input id="cp"  type="text"  name="cp" size="30" maxlength="7" placeholder="code Postal">
+    <span style="color: blue;">${form.erreurs['cp']}</span>
+    </br>
+    </br>
+    
+    
        </center>
 
     <center>

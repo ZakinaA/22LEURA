@@ -13,6 +13,11 @@ public class Utilisateur {
     private int idUtilisateur;
     private String username;
     private String password;
+    private String mail;
+    private String tel;
+    private String rue;
+    private String ville;
+    private String cp;
     private Categorie categorie;
     private Membre membre;
 
@@ -57,6 +62,46 @@ public class Utilisateur {
 
     public void setMembre(Membre membre) {
         this.membre = membre;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getRue() {
+        return rue;
+    }
+
+    public void setRue(String rue) {
+        this.rue = rue;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public String getCp() {
+        return cp;
+    }
+
+    public void setCp(String cp) {
+        this.cp = cp;
     }
     
     

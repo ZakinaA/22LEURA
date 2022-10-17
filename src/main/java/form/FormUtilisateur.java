@@ -36,11 +36,36 @@ public class FormUtilisateur {
     }
 
     private void validationPassword( String Password) throws Exception {
-        if ( Password != null && Password.length() <10  ) {
+        if ( Password != null && Password.length() <8   ) {
             throw new Exception( "le mot de passe est trop faible" );
         }
     }
     
+        private void validationMail( String Mail) throws Exception {
+        if ( Mail != null && Mail.length() <5   ) {
+            throw new Exception( "le mail n'est pas bon" );
+        }
+    }
+            private void validationTel( String Tel) throws Exception {
+        if ( Tel != null && Tel.length() <10   ) {
+            throw new Exception( "le numéro n'est pas valide" );
+        }
+    }
+                private void validationRue( String Rue) throws Exception {
+        if (  Rue != null && Rue.length() <1    ) {
+            throw new Exception( "champ obligatoire" );
+        }
+    }
+                private void validationVille( String Ville) throws Exception {
+        if (  Ville != null && Ville.length() <1    ) {
+            throw new Exception( "champ obligatoire" );
+        }
+    }
+                private void validationCp( String Cp) throws Exception {
+        if (  Cp != null && Cp.length() <5  ) {
+            throw new Exception( "Le code postal n'est pas bon" );
+        }
+    }
     
     
     private void setErreur( String champ, String message ) {
@@ -68,6 +93,11 @@ public class FormUtilisateur {
         //récupération dans des variables des données saisies dans les champs de formulaire
         String username = getDataForm( request, "username" );
         String password = getDataForm( request, "password");
+        String mail = getDataForm( request, "mail");
+        String tel = getDataForm( request, "tel");
+        String rue = getDataForm( request, "rue");
+        String ville = getDataForm( request, "ville");
+        String cp = getDataForm( request, "cp");
         
         try {
             validationUsername(username );
@@ -82,6 +112,41 @@ public class FormUtilisateur {
             setErreur( "password", e.getMessage() );
         }
         unUtilisateur.setPassword(password);
+        
+        try {
+            validationMail(mail);
+        } catch ( Exception e ) {
+            setErreur( "mail", e.getMessage() );
+        }
+        unUtilisateur.setMail(mail);
+        
+        try {
+            validationTel(tel);
+        } catch ( Exception e ) {
+            setErreur( "tel", e.getMessage() );
+        }
+        unUtilisateur.setTel(tel);
+        
+        try {
+            validationRue(rue);
+        } catch ( Exception e ) {
+            setErreur( "rue", e.getMessage() );
+        }
+        unUtilisateur.setRue(rue);
+       
+        try {
+            validationVille(ville);
+        } catch ( Exception e ) {
+            setErreur( "ville", e.getMessage() );
+        }
+        unUtilisateur.setVille(ville);
+        
+        try {
+            validationCp(cp);
+        } catch ( Exception e ) {
+            setErreur( "cp", e.getMessage() );
+        }
+        unUtilisateur.setCp(cp);
    
 
         if ( erreurs.isEmpty() ) {
@@ -97,3 +162,4 @@ public class FormUtilisateur {
         return unUtilisateur;
     }
 }
+

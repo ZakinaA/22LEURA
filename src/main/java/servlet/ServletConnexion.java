@@ -97,12 +97,7 @@ public class ServletConnexion extends HttpServlet {
         System.out.println("servlergroupe url="+url);
 
         //Affichage de tous les groupes (en indiquant le libellé du genre musical)
-        if(url.equals("/normanzik/ServletGroupe/lister")){
-             System.out.println("servlergroupe LISTER");
-            ArrayList<Groupe> lesGroupes = DaoGroupe.getLesGroupes(connection);
-            request.setAttribute("pLesGroupes", lesGroupes);
-            this.getServletContext().getRequestDispatcher("/view/groupe/lister.jsp" ).forward( request, response );
-        }
+
 
         // Affichage du groupe selectionné (depuis la fonctionnalité lister)
         

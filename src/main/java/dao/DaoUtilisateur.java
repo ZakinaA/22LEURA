@@ -27,7 +27,7 @@ public class DaoUtilisateur {
         
         ArrayList<Utilisateur> lesUtilisateurs  = new ArrayList<Utilisateur>();
         try{
-            requete=connection.prepareStatement("select * from utilisateur");
+            requete=connection.prepareStatement("select * from utilisateur,membre");
             /*System.out.println("Requete" + requete);*/
         
             rs = requete.executeQuery();
@@ -37,6 +37,11 @@ public class DaoUtilisateur {
                 Utilisateur leUtilisateur = new Utilisateur();
                 leUtilisateur.setUsername(rs.getString("Utilisateur.username"));
                 leUtilisateur.setPassword(rs.getString("Utilisateur.password"));
+                leUtilisateur.setMail(rs.getString("Utilisateur.mail"));
+                leUtilisateur.setTel(rs.getString("Utilisateur.tel"));
+                leUtilisateur.setRue(rs.getString("Utilisateur.rue"));
+                leUtilisateur.setVille(rs.getString("Utilisateur.ville"));
+                leUtilisateur.setCp(rs.getString("Utilisateur.cp"));
                 
             
                 Membre leMembre = new Membre();
@@ -60,10 +65,48 @@ public class DaoUtilisateur {
     public static Utilisateur ajouterUtilisateur (Connection connection, Utilisateur unUtilisateur){
         int idGenere = -1;
         try{
-                       requete=connection.prepareStatement("INSERT INTO UTILISATEUR ( utilisateur.username, utilisateur.password, utilisateur.categorie) VALUES (?,?,?)", requete.RETURN_GENERATED_KEYS );
+                       requete=connection.prepareStatement("INSERT INTO UTILISATEUR ( utilisateur.username, utilisateur.password,Utilisateur.mail,Utilisateur.tel,Utilisateur.rue,Utilisateur.ville,Utilisateur.cp, utilisateur.categorie) VALUES (?,?,?,?,?,?,?,?)", requete.RETURN_GENERATED_KEYS );
             requete.setString(1, unUtilisateur.getUsername());
             requete.setString(2, unUtilisateur.getPassword());
-            requete.setInt(3, 2);
+            requete.setString(3, unUtilisateur.getMail());
+            requete.setString(4, unUtilisateur.getTel());
+            requete.setString(5, unUtilisateur.getRue());
+            requete.setString(6, unUtilisateur.getVille());
+            requete.setString(7, unUtilisateur.getCp());
+            requete.setInt(8, 2);
+            
+            int resultatRequete = requete.executeUpdate();
+            System.out.println("resultatrequete=" + resultatRequete);
+
+            while ( rs.next() ) {
+                idGenere = rs.getInt( 1 );
+                unUtilisateur.setIdUtilisateur(idGenere);
+            }
+            
+            if (resultatRequete != 1){
+                unUtilisateur= null;
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        } 
+        return unUtilisateur;
+    }
+    
+    public static Utilisateur getUtilisateur (Connection connection, Utilisateur unUtilisateur){
+        int idGenere = -1;
+        try{
+            requete=connection.prepareStatement("SELECT * FROM UTILISATEUR WHERE ( utilisateur.username, utilisateur.password) VALUES(?,?)", requete.RETURN_GENERATED_KEYS );
+            requete.setString(1, unUtilisateur.getUsername());
+            requete.setString(2, unUtilisateur.getPassword());
+            requete.setString(3, unUtilisateur.getMail());
+            requete.setString(4, unUtilisateur.getTel());
+            requete.setString(5, unUtilisateur.getRue());
+            requete.setString(6, unUtilisateur.getVille());
+            requete.setString(7, unUtilisateur.getCp());
+            requete.setInt(8, 2);
+ 
             
             int resultatRequete = requete.executeUpdate();
             System.out.println("resultatrequete=" + resultatRequete);
