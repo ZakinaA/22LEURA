@@ -50,6 +50,10 @@
         <url-pattern>/ServletGroupe/lister</url-pattern>
     </servlet-mapping>
     
+    <servlet-mapping>
+        <servlet-name>ServletGroupe</servlet-name>
+        <url-pattern>/ServletGroupe/Membre</url-pattern>
+    </servlet-mapping>
     
     <servlet-mapping>
         <servlet-name>ServletGroupe</servlet-name>
@@ -66,7 +70,7 @@
     
     
     <!-- pages servlet festival -->
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ServletFestival</servlet-name>
         <url-pattern>/ServletFestival/listerFestival</url-pattern>
     </servlet-mapping>

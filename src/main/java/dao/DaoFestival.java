@@ -66,7 +66,7 @@ public class DaoFestival {
         try
         {
             //preparation de la requete
-            requete=connection.prepareStatement("select * from festival left join groupe on groupe.idGroupe = groupe.idGroupe where groupe.idGroupe");
+            requete=connection.prepareStatement("select * from festival left join groupe on groupe.idGroupe = groupe.idGroupe where groupe.idGroupe = ?");
             requete.setInt(1, idFestival);
            /* System.out.println("Requete" + requete); */
 
@@ -77,12 +77,11 @@ public class DaoFestival {
             if ( rs.next() ) {
 
                 
-                
+
                 leFestival.setIdFestival(rs.getInt("festival.idFestival"));
                 leFestival.setNom(rs.getString("festival.nom"));
-                leFestival.setDateFestival(rs.getString("festival.datefestival"));
+                leFestival.setDateFestival(rs.getString("festival.date"));
                 leFestival.setLieu(rs.getString("festival.lieu"));
-                
 
                 Groupe leGroupe = new Groupe();
                 leGroupe.setId(rs.getInt("groupe.idGroupe"));

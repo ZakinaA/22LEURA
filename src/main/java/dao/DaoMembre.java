@@ -14,7 +14,10 @@ import java.util.ArrayList;
 import model.Dispositif;
 import model.Genre;
 import model.Groupe;
+import model.Instrument;
 import model.Membre;
+import model.Statut;
+import model.Utilisateur;
 
 /**
  *
@@ -52,4 +55,53 @@ public class DaoMembre {
         } 
         return unMembre;
     }
+    
+    
+    public static Membre getLeMembre(Connection connection, int idMembre){
+
+        Membre leMembre = new Membre();
+        try
+        {
+            //preparation de la requete
+            requete=connection.prepareStatement("select * from membre left join instrument on membre.idInstrumentPref = instrument.idInstrument left join statut on membre.statut = statut.idStatut left join utilisateur on membre.idUtilisateur = utilisateur.idUtilisateur where membre.idMembre = ? ");
+            requete.setInt(1, idMembre);
+           /* System.out.println("Requete" + requete); */
+
+            //executer la requete
+            rs=requete.executeQuery();
+
+            //On hydrate l'objet métier Groupe et sa relation Genre avec les résultats de la requête
+            while ( rs.next() ) {
+
+                leMembre.setId(rs.getInt("membre.idMembre"));
+                leMembre.setNom(rs.getString("membre.nom"));
+                leMembre.setPrenom(rs.getString("membre.prenom"));
+                
+           
+                Instrument instrumentPref = new Instrument();
+                instrumentPref.setIdInstrument(rs.getInt("membre.idInstrumentPref"));
+                
+                
+                Statut leStatut = new Statut();
+                leStatut.setId(rs.getInt("membre.statut"));
+
+                
+                Utilisateur unUtilisateur = new Utilisateur();
+                unUtilisateur.setMembre(leMembre);
+                
+                
+                leMembre.setInstrumentPrefere(instrumentPref);                
+                leMembre.setStatut(leStatut);
+                
+
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return leMembre ;
+    }
+    
 }

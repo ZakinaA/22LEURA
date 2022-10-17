@@ -3,6 +3,7 @@
 <%@ page import="form.FormGroupe" %>
 <%@ page import="model.Genre" %>
 <%@ page import="java.util.ArrayList" %>
+<%@include  file="../outils/header.jsp" %>
 
 <link rel ="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"/> 
 
@@ -82,4 +83,5 @@
     <center/>
 </form>
 </body>
+<%@include  file="../outils/footer.jsp" %>
 </html>

@@ -90,25 +90,22 @@ public class ServletFestival extends HttpServlet {
         
         
         if(url.equals("/normanzik/ServletFestival/listerFestival")){
-             System.out.println("servlerfestival LISTERFESTIVAL");
-             System.out.println("servlergroupe FESTIVAL");
             ArrayList<Festival> lesFestivals = DaoFestival.getlesFestivals(connection);
             request.setAttribute("pLesFestivals", lesFestivals);
             this.getServletContext().getRequestDispatcher("/view/festival/listerFestival.jsp" ).forward( request, response );
         }
         
-        if(url.equals("/normanzik/ServletFestival/InscritFestival")){
+        /*if(url.equals("/normanzik/ServletFestival/InscritFestival")){
             this.getServletContext().getRequestDispatcher("/view/festival/InscritFestival.jsp" ).forward( request, response );
-        }
+        }*/
         
         if(url.equals("/normanzik/ServletFestival/consulterFestival")){
             int idFestival = Integer.parseInt(request.getParameter("idFestival"));
             Festival leFestival = DaoFestival.getLeFestival(connection, idFestival);
             request.setAttribute("pFestival", leFestival);
-            this.getServletContext().getRequestDispatcher("/view/festival/consulterFestival.jsp" ).forward( request, response );
+            /*request.setAttribute("pFestival", leFestival);
+            this.getServletContext().getRequestDispatcher("/view/festival/consulterFestival.jsp" ).forward( request, response );*/
         }
-
-    
     }
 
     /**

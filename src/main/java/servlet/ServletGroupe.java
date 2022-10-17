@@ -111,35 +111,16 @@ public class ServletGroupe extends HttpServlet {
             request.setAttribute("pMembre", lesMembres);
             this.getServletContext().getRequestDispatcher("/view/groupe/consulter.jsp" ).forward( request, response );
         }
-  
-        
-        if(url.equals("/normanzik/ServletGroupe/connexion")){
-            this.getServletContext().getRequestDispatcher("/view/groupe/connexion.jsp" ).forward( request, response );
+
+                if(url.equals("/normanzik/ServletGroupe/Membre")){
+
+            int idMembre = Integer.parseInt(request.getParameter("idMembre"));
+            Membre leMembre = DaoMembre.getLeMembre(connection, idMembre);
+            request.setAttribute("pMembre", leMembre);
+            this.getServletContext().getRequestDispatcher("/view/groupe/Membre.jsp" ).forward( request, response );
         }
-        
-        if(url.equals("/normanzik/ServletGroupe/inscription")){
-            this.getServletContext().getRequestDispatcher("/view/groupe/inscription.jsp" ).forward( request, response );
-        }
-        
-        if(url.equals("/normanzik/ServletGroupe/consulterFestival")){
-            this.getServletContext().getRequestDispatcher("/view/groupe/consulterFestival.jsp" ).forward( request, response );
-        }
-        
-        if(url.equals("/normanzik/ServletGroupe/consulterGroupe")){
-            this.getServletContext().getRequestDispatcher("/view/groupe/consulterGroupe.jsp" ).forward( request, response );
-        }
-        
-        if(url.equals("/normanzik/ServletGroupe/accueil")){
-            this.getServletContext().getRequestDispatcher("/view/groupe/accueil.jsp" ).forward( request, response );
-        }
-        
-        if(url.equals("/normanzik/ServletGroupe/juryInfoGroupe")){
-            this.getServletContext().getRequestDispatcher("/view/groupe/juryInfoGroupe.jsp" ).forward( request, response );
-        }
-        
-       
-        
-   
+                
+                
         if(url.equals("/normanzik/ServletGroupe/ajouter"))
         {
             ArrayList<Genre> lesGenres = DaoAdmin.getLesGenres(connection);

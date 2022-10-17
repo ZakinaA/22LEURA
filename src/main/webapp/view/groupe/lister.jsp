@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@page import="model.Groupe"%>
 <%@ page import="java.util.ArrayList" %>
+<%@include  file="../outils/header.jsp" %>
 <link rel ="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"/>
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,7 @@
 
 <br/>
 <br/>
-<center><h1>Consulter Groupe</h1><center/>
+<center><h1>Liste des Groupes</h1><center/>
 <br/>
 <br/>
 
@@ -26,7 +27,7 @@
     <table  class="table table-bordered table-striped table-condensed">
         <thead>
         <tr>
-            <th>Id</th>
+            <th>Numéro</th>
             <th>Nom</th>
             <th>dateCreation</th>
             <th>Genre</th>
@@ -80,4 +81,5 @@
     </table>
 </div>
 </body>
+<%@include  file="../outils/footer.jsp" %>
 </html>

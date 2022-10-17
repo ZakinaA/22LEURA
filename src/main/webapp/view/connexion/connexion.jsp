@@ -5,6 +5,7 @@
 --%>
 <link rel ="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"/> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include  file="../outils/header.jsp" %>
 <!DOCTYPE html>
 <html>
     
@@ -12,53 +13,11 @@
         <head>
             
             
-            
-    <style>  /* CSS for header */
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #0074FF;
-    }
-
-    .header .logo {
-      font-size: 25px;
-      font-family: 'Sriracha', cursive;
-      color: #fff;
-      text-decoration: none;
-      margin-left: 30px;
-    }
-
-    .nav-items {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      background-color: #0074FF;
-      margin-right: 20px;
-    }
-
-    .nav-items a {
-      text-decoration: none;
-      color: #fff;
-      padding: 35px 20px;
-    }</style>
-    
-    
-    
-
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Connexion</title>
     </head>
     <body>
         
-          <header class="header">
-    <a href="../" class="logo">Norman'zik</a>
-    <nav class="nav-items">
-      <a href="../ServletGroupe/lister">Groupe</a>
-      <a href="../ServletFestival/consulterFestival">Festival</a>
-      <a href="../ServletConnexion/connexion">Se connecter</a>
-    </nav>
-  </header>
 
         <div align="center" class="body">
 
@@ -119,21 +78,12 @@
       </div>
     </div>
   </div>
-  <div
-    class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-    <!-- Copyright -->
-    <div class="text-white mb-3 mb-md-0">
-      Copyright © 2022-2023. Normanzik Leura.
-    </div>
-    <!-- Copyright -->
 
-    <!-- Right -->
-    
-    <!-- Right -->
-  </div>
 </section>
     
 </div>
 
 </body>
+<%@include  file="../outils/footer.jsp" %>
+
 </html>
