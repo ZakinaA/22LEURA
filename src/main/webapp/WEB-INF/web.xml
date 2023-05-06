@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    
     <listener>
         <listener-class>dao.InitConnexion</listener-class>
     </listener>
@@ -8,15 +7,30 @@
         <servlet-name>ServletGroupe</servlet-name>
         <servlet-class>servlet.ServletGroupe</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>ServletInscription</servlet-name>
+        <servlet-class>servlet.ServletInscription</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>ServletAccueil</servlet-name>
         <servlet-class>servlet.ServletAccueil</servlet-class>
     </servlet>
-    
+        <servlet>
+        <servlet-name>ServletConnexion</servlet-name>
+        <servlet-class>servlet.ServletConnexion</servlet-class>
+    </servlet>
+            <servlet>
+        <servlet-name>ServletConcert</servlet-name>
+        <servlet-class>servlet.ServletConcert</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>NewServlet</servlet-name>
         <servlet-class>servlet.NewServlet</servlet-class>
+    </servlet>
+    <!-- Servlet festival -->
+    <servlet>
+        <servlet-name>ServletFestival</servlet-name>
+        <servlet-class>servlet.ServletFestival</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletGroupe</servlet-name>
@@ -26,18 +40,60 @@
         <servlet-name>ServletGroupe</servlet-name>
         <url-pattern>/ServletGroupe/lister</url-pattern>
     </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ServletGroupe</servlet-name>
+        <url-pattern>/ServletGroupe/Membre</url-pattern>
+    </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>ServletGroupe</servlet-name>
         <url-pattern>/ServletGroupe/ajouter</url-pattern>
     </servlet-mapping>
-        
-
+    <servlet-mapping>
+        <servlet-name>ServletGroupe</servlet-name>
+        <url-pattern>/ServletGroupe/modifierGroupe</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletGroupe</servlet-name>
+        <url-pattern>/ServletGroupe/supprimerGroupe</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletInscription</servlet-name>
+        <url-pattern>/ServletInscription/inscription</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletConnexion</servlet-name>
+        <url-pattern>/ServletConnexion/connexion</url-pattern>
+    </servlet-mapping>
+    <!-- pages servlet festival -->
+    <servlet-mapping>
+        <servlet-name>ServletFestival</servlet-name>
+        <url-pattern>/ServletFestival/listerFestival</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletFestival</servlet-name>
+        <url-pattern>/ServletFestival/InscritFestival</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletFestival</servlet-name>
+        <url-pattern>/ServletFestival/consulterFestival</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletAccueil</servlet-name>
         <url-pattern>/ServletAccueil/index</url-pattern>
     </servlet-mapping>
-    
-         
+    <servlet-mapping>
+            <!-- pages servlet concert -->
+            
+        <servlet-name>ServletConcert</servlet-name>
+        <url-pattern>/ServletConcert/listerConcert</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletConcert</servlet-name>
+        <url-pattern>/ServletConcert/consulterConcert</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30

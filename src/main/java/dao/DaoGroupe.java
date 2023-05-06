@@ -17,7 +17,8 @@ import model.Jouer;
 import model.Membre;
 import model.Titre;
 import model.Statut;
-import sun.tools.tree.ThisExpression;
+//import sun.tools.tree.ThisExpression;
+import test.ConnexionBdd;
 
 /**
  *
@@ -273,6 +274,36 @@ public class DaoGroupe {
         return lesTitres;
     }
     
+    public static int  updateGroupe (Connection connection, Groupe leGroupe){
+    int resultatUpdate = -1;
+    try{
+        
+        requete = connection.prepareStatement("UPDATE groupe SET groupe.nom=?, groupe.dateCreation=?, groupe.telephone=?,groupe.melSiteWeb=?,groupe.lieuRepetition=?,groupe.estSelectionne=?,groupe.idGenre=?, groupe.idMembre=? WHERE groupe.idGroupe=?");
+        
+        requete.setString(1, leGroupe.getNom());
+        requete.setString(2, leGroupe.getDateCreation());
+        requete.setString(3, leGroupe.getTelephone());
+        requete.setString(4, leGroupe.getMelSiteWeb());
+        requete.setString(5, leGroupe.getLieurepetition());
+        requete.setString(6, leGroupe.getEstSelectionne());
+        requete.setString(7, leGroupe.getGenre().getLibelle());
+        requete.setString(9, leGroupe.getContact().getNom());
+
+        
+        resultatUpdate = requete.executeUpdate();
+        
+        ConnexionBdd.fermerConnexion(rs);
+        ConnexionBdd.fermerConnexion(requete);
+        
+    }
+    
+    catch(SQLException e){
+        e.printStackTrace();
+    }
+    return resultatUpdate;
+    
+}
+    
     
     public static Groupe ajouterGroupe(Connection connection, Groupe unGroupe){
         int idGenere = -1;
@@ -319,5 +350,25 @@ public class DaoGroupe {
         return unGroupe ;
     }
 
+public static int  supprimerGroupe (Connection connection, Groupe leGroupe){
+    int resultatDelete = -1;
+    try{
+        
+        requete = connection.prepareStatement("DELETE FROM groupe WHERE groupe.idGroupe=?");
+        
+        requete.setString(1, leGroupe.getNom());
 
+        resultatDelete = requete.executeUpdate();
+        
+        ConnexionBdd.fermerConnexion(rs);
+        ConnexionBdd.fermerConnexion(requete);
+        
+    }
+    
+    catch(SQLException e){
+        e.printStackTrace();
+    }
+    return resultatDelete;
+    
+}
 }

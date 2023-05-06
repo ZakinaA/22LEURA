@@ -12,7 +12,7 @@
     
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Ajouter Groupe</title>
+        <title>Modifier Groupe</title>
     </head>
     <body>
 
@@ -24,26 +24,31 @@
           <div class="card-body p-md-5">
             <div class="row justify-content-center">
               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                  
+<%
+    Groupe unGroupe = (Groupe)request.getAttribute("pGroupe");
+%>
 
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">AJOUTER GROUPE</p>
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Modifier le Groupe: <%out.println(unGroupe.getNom());%></p>
 
 <%
     //Client client=(Client)request.getAttribute("client");
     FormGroupe form = (FormGroupe)request.getAttribute("form");
 %>
 
-<form class="form-inline" action="../ServletGroupe/lister" method="POST">
+
+<form class="form-inline" action="../" method="POST">
     <center>
     <label for="nom">Nom : </label>
     </br>
-    <input id="nom" type="text" name="nom"  size="30" maxlength="10">
+    <input id="nom" type="text" name="nom"  size="30" maxlength="10" value="<%out.println(unGroupe.getNom()); %>">
     <span style="color: blue;">${form.erreurs['nom']}</span>
     <br />
     </br>
     
     <label for="dateCreation">Date de création : </label>
     </br>
-    <input id="dateCreation"  type="text"  name="dateCreation" size="30" maxlength="10">
+    <input id="dateCreation"  type="text"  name="dateCreation" size="30" maxlength="10" value="<%out.println(unGroupe.getDateCreation()); %>">
     <span style="color: blue;">${form.erreurs['dateCreation']}</span>
     </br>
     </br>
@@ -65,21 +70,21 @@
     
     <label for="telephone"> Telephone : </label>
     </br>
-    <input id="telephone" type="text" name="telephone" size="30" maxlength="10" /> 
+    <input id="telephone" type="text" name="telephone" size="30" maxlength="10" value="<%out.println(unGroupe.getTelephone()); %>"/> 
     <span style="color: blue;">${form.erreurs['telephone']}</span>
     </br>
     </br>
     
     <label for="melSiteWeb"> Mail ou site web : </label>
     </br>
-    <input id="melSiteWeb" type="text" name="melSiteWeb" size="30" maxlength="25" /> 
+    <input id="melSiteWeb" type="text" name="melSiteWeb" size="30" maxlength="25" value="<%out.println(unGroupe.getMelSiteWeb()); %>" /> 
     <span style="color: blue;">${form.erreurs['melSiteWeb']}</span>
     </br>
     </br>
 
     <label for="lieuRepetition"> Lieu de répétition : </label>
     </br>
-    <input id="lieuRepetition" type="text" name="lieuRepetition" size="30" maxlength="30" /> 
+    <input id="lieuRepetition" type="text" name="lieuRepetition" size="30" maxlength="30" value="<%out.println(unGroupe.getLieurepetition()); %>" /> 
     <span style="color: blue;">${form.erreurs['lieuRepetition']}</span>
     
     
