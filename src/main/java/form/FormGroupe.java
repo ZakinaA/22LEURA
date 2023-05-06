@@ -134,4 +134,65 @@ public class FormGroupe {
         unGroupe.setGenre(leGenre);
         return unGroupe ;
     }
+    public Groupe modifierGroupe(HttpServletRequest request ) {
+
+        Groupe unGroupe  = new Groupe();
+
+        //récupération dans des variables des données saisies dans les champs de formulaire
+        String nom = getDataForm( request, "nom" );
+        String dateCreation = getDataForm( request, "dateCreation");
+        int idGenre = Integer.parseInt(getDataForm( request, "idGenre" ));
+        String telephone = getDataForm(request, "telephone");
+        String melSiteWeb = getDataForm(request, "melSiteWeb");
+        String lieuRepetition = getDataForm(request, "lieuRepetition");
+
+        try {
+            validationNom( nom );
+        } catch ( Exception e ) {
+            setErreur( "nom", e.getMessage() );
+        }
+         unGroupe.setNom(nom);
+         
+        try {
+            validationDateCreation( dateCreation );
+        } catch ( Exception e ) {
+            setErreur( "dateCreation", e.getMessage() );
+        }
+        unGroupe.setDateCreation(dateCreation);
+       
+        try {
+            validationTelephone( telephone );
+        } catch ( Exception e ) {
+            setErreur( "telephone", e.getMessage() );
+        }
+        unGroupe.setTelephone(telephone);
+        
+        try {
+            validationMelSiteWeb( melSiteWeb );
+        } catch ( Exception e ) {
+            setErreur( "melSiteWeb", e.getMessage() );
+        }
+        unGroupe.setMelSiteWeb(melSiteWeb);
+        
+        try {
+            validationLieuRepetition( lieuRepetition );
+        } catch ( Exception e ) {
+            setErreur( "lieuRepetition", e.getMessage() );
+        }
+        unGroupe.setLieurepetition(lieuRepetition);
+
+        if ( erreurs.isEmpty() ) {
+            resultat = "Succès de l'ajout.";
+        } else {
+            resultat = "Échec de l'ajout.";
+        }
+        System.out.println("resultat erreurs="+resultat);
+
+        // hydratation de l'objet groupe avec les variables valorisées ci-dessus
+
+        Genre leGenre = new Genre();
+        leGenre.setId(idGenre);
+        unGroupe.setGenre(leGenre);
+        return unGroupe ;
+    }
 }

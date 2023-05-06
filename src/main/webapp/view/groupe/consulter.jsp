@@ -3,6 +3,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@page import="model.Groupe"%>
 <%@page import="model.Titre"%>
+<%@include  file="../outils/header.jsp" %>
+<link rel ="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"/> 
 
 <!DOCTYPE html>
 <html>
@@ -12,6 +14,7 @@
 <body>
 <h1>Consulter Groupe</h1>
 <br/>
+<br/>     
 
 
 <%
@@ -78,7 +81,7 @@ ArrayList<Membre> lesMembres = (ArrayList)request.getAttribute("pMembre");
             for (Membre unMembre : lesMembres){
 
                 out.println("<tr><td>");
-                out.println("<a href ='../ServletGroupe/consulterMembre?idGroupe=" + unGroupe.getId() + "'>");
+                out.println("<a href ='../ServletGroupe/Membre?idMembre=" + unMembre.getId() + "'>");
                 out.println(unMembre.getNom());
                 out.println("</a></td>");
                                 
@@ -136,4 +139,5 @@ ArrayList<Membre> lesMembres = (ArrayList)request.getAttribute("pMembre");
     
 
 </body>
+<%@include  file="../outils/footer.jsp" %>
 </html>
