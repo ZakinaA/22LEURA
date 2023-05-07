@@ -2,6 +2,7 @@
 <%@page import="model.Groupe"%>
 <%@ page import="form.FormGroupe" %>
 <%@ page import="model.Genre" %>
+<%@ page import="model.Dispositif" %>
 <%@ page import="java.util.ArrayList" %>
 <%@include  file="../outils/header.jsp" %>
 
@@ -81,7 +82,23 @@
     </br>
     <input id="lieuRepetition" type="text" name="lieuRepetition" size="30" maxlength="30" /> 
     <span style="color: blue;">${form.erreurs['lieuRepetition']}</span>
-    
+    </br>
+    </br>
+
+    <%-- Champ Liste des dispositif --%>
+    <label for="dispositif">Dispositif : </label>
+    </br>
+    <select name="idDispositif">
+        <%
+            ArrayList<Dispositif> lesDispositifs = (ArrayList)request.getAttribute("pLesDispositifs");
+            for (int i=0; i<lesDispositifs.size();i++){
+                Dispositif d = lesDispositifs.get(i);
+                out.println("<option value='" + d.getId()+"'>" + d.getLibelle()+"</option>" );
+            }
+        %>
+    </select>
+    </br>
+    </br>
     
   
     </br>
@@ -90,6 +107,8 @@
    
     <input type="submit" name="valider" id="valider" value="Valider"/>
     <center/>
+    
+</br>
 </form>
 </body>
 <%@include  file="../outils/footer.jsp" %>

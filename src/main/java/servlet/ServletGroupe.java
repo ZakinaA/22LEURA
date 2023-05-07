@@ -20,6 +20,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Dispositif;
 import model.Genre;
 import model.Groupe;
 import model.Membre;
@@ -133,6 +134,8 @@ public class ServletGroupe extends HttpServlet {
         {
             ArrayList<Genre> lesGenres = DaoAdmin.getLesGenres(connection);
             request.setAttribute("pLesGenres", lesGenres);
+            ArrayList<Dispositif> lesDispositifs = DaoAdmin.getLesDispositifs(connection);
+            request.setAttribute("pLesDispositifs", lesDispositifs);
             this.getServletContext().getRequestDispatcher("/view/groupe/ajouter.jsp" ).forward( request, response );
         }
     }

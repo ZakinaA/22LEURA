@@ -313,14 +313,17 @@ public class DaoGroupe {
             // groupe.idGroupe (clé primaire de la table groupe) est en auto_increment,donc on ne renseigne pas cette valeur
             // le paramètre RETURN_GENERATED_KEYS est ajouté à la requête afin de pouvoir récupérer l'id généré par la bdd (voir ci-dessous)
             // supprimer ce paramètre en cas de requête sans auto_increment.
-            requete=connection.prepareStatement("INSERT INTO GROUPE ( groupe.nom, groupe.dateCreation, groupe.idGenre, groupe.telephone, groupe.melSiteWeb, groupe.lieuRepetition)\n" +
-                    "VALUES (?,?,?,?,?,?)", requete.RETURN_GENERATED_KEYS );
+            requete=connection.prepareStatement("INSERT INTO GROUPE ( groupe.nom, groupe.dateCreation, groupe.idGenre, groupe.telephone, groupe.melSiteWeb, groupe.lieuRepetition, groupe.idDispositif, groupe.idMembre)\n" +
+                    "VALUES (?,?,?,?,?,?,?,?)", requete.RETURN_GENERATED_KEYS );
             requete.setString(1, unGroupe.getNom());
             requete.setString(2, unGroupe.getDateCreation());
             requete.setInt(3, unGroupe.getGenre().getId());
             requete.setString(4, unGroupe.getTelephone());
             requete.setString(5, unGroupe.getMelSiteWeb());
             requete.setString(6, unGroupe.getLieurepetition());
+            requete.setInt(7, unGroupe.getLeDispositif().getId());
+            requete.setInt(8, unGroupe.getContact().getId());
+
 
             System.out.println("requeteInsertion=" + requete);
             /* Exécution de la requête */
