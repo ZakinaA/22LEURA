@@ -136,6 +136,8 @@ public class ServletGroupe extends HttpServlet {
             request.setAttribute("pLesGenres", lesGenres);
             ArrayList<Dispositif> lesDispositifs = DaoAdmin.getLesDispositifs(connection);
             request.setAttribute("pLesDispositifs", lesDispositifs);
+            ArrayList<Membre> lesMembres = DaoMembre.getLesMembres(connection);
+            request.setAttribute("pLesMembres", lesMembres);
             this.getServletContext().getRequestDispatcher("/view/groupe/ajouter.jsp" ).forward( request, response );
         }
     }
