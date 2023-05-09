@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import model.Dispositif;
 import model.Genre;
 
 /**
@@ -41,6 +42,29 @@ public class DaoAdmin {
             //out.println("Erreur lors de l’établissement de la connexion");
         }
         return lesGenres ;
+    }
+    
+    
+        public static ArrayList<Dispositif> getLesDispositifs(Connection connection){
+        ArrayList<Dispositif> lesDispositifs = new  ArrayList<Dispositif>();
+        try
+        {
+            requete=connection.prepareStatement("select * from  dispositif ");
+            rs=requete.executeQuery();
+            while ( rs.next() ) {
+
+                Dispositif leDispositif = new Dispositif();
+                leDispositif.setId(rs.getInt("dispositif.idDispositif"));
+                leDispositif.setLibelle(rs.getString("dispositif.libelle"));
+                lesDispositifs.add(leDispositif);
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return lesDispositifs ;
     }
     
 }

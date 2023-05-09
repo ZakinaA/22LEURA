@@ -1,3 +1,5 @@
+<%@page import="model.Membre"%>
+<%@page import="model.Dispositif"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@page import="model.Groupe"%>
 <%@ page import="form.FormGroupe" %>
@@ -88,13 +90,45 @@
     <span style="color: blue;">${form.erreurs['lieuRepetition']}</span>
     
     
-  
+    
+    </br>
+    </br>
+
+    <%-- Champ Liste des Dispositifs --%>
+    <label for="dispositif">Dispositif : </label>
+    </br>
+    <select name="idDispositif">
+        <%
+            ArrayList<Dispositif> lesDispositifs = (ArrayList)request.getAttribute("pLesDispositifs");
+            for (int i=0; i<lesDispositifs.size();i++){
+                Dispositif d = lesDispositifs.get(i);
+                out.println("<option value='" + d.getId()+"'>" + d.getLibelle()+"</option>" );
+            }
+        %>
+    </select>
+    </br>
+    </br>
+    
+    <%-- Champ Liste des Membres pour contact --%>
+    <label for="membre">Membre Contact : </label>
+    </br>
+    <select name="idMembre">
+        <%
+            ArrayList<Membre> lesMembres = (ArrayList)request.getAttribute("pLesMembres");
+            for (int i=0; i<lesMembres.size();i++){
+                Membre m = lesMembres.get(i);
+                out.println("<option value='" + m.getId()+"'>" + m.getNom()+" "+m.getPrenom()+"</option>" );
+            }
+        %>
+    </select>
     </br>
     </br>
     </br>
    
     <input type="submit" name="valider" id="valider" value="Valider"/>
     <center/>
+    
+<br/>
 </form>
 </body>
 <%@include  file="../outils/footer.jsp" %>

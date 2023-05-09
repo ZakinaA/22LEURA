@@ -104,4 +104,29 @@ public class DaoMembre {
         return leMembre ;
     }
     
+    
+    
+     public static ArrayList<Membre> getLesMembres(Connection connection){
+        ArrayList<Membre> lesMembres = new  ArrayList<Membre>();
+        try
+        {
+            requete=connection.prepareStatement("select * from  membre ");
+            rs=requete.executeQuery();
+            while ( rs.next() ) {
+
+                Membre leMembre = new Membre();
+                leMembre.setId(rs.getInt("membre.idMembre"));
+                leMembre.setPrenom(rs.getString("membre.prenom"));
+                leMembre.setNom(rs.getString("membre.nom"));
+                lesMembres.add(leMembre);
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            //out.println("Erreur lors de l’établissement de la connexion");
+        }
+        return lesMembres ;
+    }
+    
 }
