@@ -66,7 +66,7 @@ public class DaoFestival {
         try
         {
             //preparation de la requete
-            requete=connection.prepareStatement("select * from festival left join groupe on groupe.idGroupe = groupe.idGroupe where groupe.idGroupe");
+            requete=connection.prepareStatement("SELECT * FROM festival WHERE idFestival = ?");
             requete.setInt(1, idFestival);
            /* System.out.println("Requete" + requete); */
 
@@ -80,11 +80,11 @@ public class DaoFestival {
                 
                 leFestival.setIdFestival(rs.getInt("festival.idFestival"));
                 leFestival.setNom(rs.getString("festival.nom"));
-                leFestival.setDateFestival(rs.getString("festival.datefestival"));
+                leFestival.setDateFestival(rs.getString("festival.date"));
                 leFestival.setLieu(rs.getString("festival.lieu"));
                 
 
-                Groupe leGroupe = new Groupe();
+                /*Groupe leGroupe = new Groupe();
                 leGroupe.setId(rs.getInt("groupe.idGroupe"));
                 leGroupe.setNom(rs.getString("groupe.nom"));
                 leGroupe.setDateCreation(rs.getString("groupe.dateCreation"));
@@ -93,7 +93,7 @@ public class DaoFestival {
                 leGroupe.setLieurepetition(rs.getString("groupe.lieuRepetition"));
 
 
-                //leFestival.setGroupe(leGroupe);
+                leFestival.setGroupe(leGroupe);*/
 
             }
         }

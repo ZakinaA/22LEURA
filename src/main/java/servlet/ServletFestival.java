@@ -104,7 +104,7 @@ public class ServletFestival extends HttpServlet {
         if(url.equals("/normanzik/ServletFestival/consulterFestival")){
             int idFestival = Integer.parseInt(request.getParameter("idFestival"));
             Festival leFestival = DaoFestival.getLeFestival(connection, idFestival);
-            request.setAttribute("pLesFestival", leFestival);
+            request.setAttribute("pFestival", leFestival);
             this.getServletContext().getRequestDispatcher("/view/festival/consulterFestival.jsp" ).forward( request, response );
         }
 
