@@ -97,7 +97,7 @@ public class DaoUtilisateur {
     public static Utilisateur getUtilisateur (Connection connection, Utilisateur unUtilisateur){
         int idGenere = -1;
         try{
-            requete=connection.prepareStatement("SELECT * FROM UTILISATEUR WHERE ( utilisateur.username, utilisateur.password) VALUES(?,?)", requete.RETURN_GENERATED_KEYS );
+            requete=connection.prepareStatement("SELECT * FROM utilisateur WHERE ( utilisateur.username, utilisateur.password) VALUES(?,?)", requete.RETURN_GENERATED_KEYS );
             requete.setString(1, unUtilisateur.getUsername());
             requete.setString(2, unUtilisateur.getPassword());
             requete.setString(3, unUtilisateur.getMail());
