@@ -145,7 +145,7 @@ public class ServletInscription extends HttpServlet {
             if (utilisateurAjoute != null ){
                 request.setAttribute("pUtilisateur", utilisateurAjoute);
 
-                this.getServletContext().getRequestDispatcher("/view/connexion/connexion.jsp" ).forward( request, response );
+                this.getServletContext().getRequestDispatcher("/index.jsp" ).forward( request, response );
             }
             else
             {
