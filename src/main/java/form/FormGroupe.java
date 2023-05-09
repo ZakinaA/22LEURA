@@ -160,6 +160,8 @@ public class FormGroupe {
         String telephone = getDataForm(request, "telephone");
         String melSiteWeb = getDataForm(request, "melSiteWeb");
         String lieuRepetition = getDataForm(request, "lieuRepetition");
+        int idDispositif = Integer.parseInt(getDataForm( request, "idDispositif" ));
+        int idMembre = Integer.parseInt(getDataForm( request, "idMembre" ));
 
         try {
             validationNom( nom );
@@ -208,6 +210,16 @@ public class FormGroupe {
         Genre leGenre = new Genre();
         leGenre.setId(idGenre);
         unGroupe.setGenre(leGenre);
+        
+        Dispositif leDispositif = new Dispositif();
+        leDispositif.setId(idDispositif);
+        unGroupe.setLeDispositif(leDispositif);
+        
+        Membre leMembre = new Membre();
+        leMembre.setId(idMembre);
+        unGroupe.setContact(leMembre);
+        
         return unGroupe ;
+
     }
 }
