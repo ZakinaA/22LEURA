@@ -162,11 +162,8 @@ public class ServletGroupe extends HttpServlet {
             throws ServletException, IOException {
        
         FormGroupe form = new FormGroupe();
-        int formType = Integer.parseInt(request.getParameter("formType"));
 
         /* Appel au traitement et à la validation de la requête, et récupération de l'objet en résultant */
-        System.out.print("id formtype : "+formType);
-        if(formType == 0) {
         Groupe leGroupeSaisi = form.ajouterGroupe(request);
 
         /* Stockage du formulaire et de l'objet dans l'objet request */
@@ -204,27 +201,7 @@ public class ServletGroupe extends HttpServlet {
         }
     }
         
-        else {
-            Groupe leGroupeSaisi = form.modifierGroupe(request);
-        
 
-            /* Stockage du formulaire et de l'objet dans l'objet request */
-            request.setAttribute( "form", form );
-            request.setAttribute( "pGroupe", leGroupeSaisi );
-            int groupeModifie = DaoGroupe.modifierGroupe(connection, leGroupeSaisi);
-            
-            HttpSession session = request.getSession();
-            session.setAttribute("notifMessage", "Le groupe " + leGroupeSaisi.getNom() + " a bien été mis à jour."); // On met un '1' à l'attribut permettant d'afficher les notifications   
-            session.setAttribute("showNotifMessage", 1); // On met un '1' à l'attribut permettant d'afficher les notifications   
-            this.getServletContext().getRequestDispatcher("/view/groupe/modifierGroupe.jsp" ).forward( request, response );    
-        }
-    
-    
-    
-    
-    
-    
-    }
 
     //fermeture des ressources
     public void destroy(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
