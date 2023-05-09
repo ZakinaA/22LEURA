@@ -273,6 +273,7 @@ public class DaoGroupe {
         }
         return lesTitres;
     }
+  
     
     public static int  updateGroupe (Connection connection, Groupe leGroupe){
     int resultatUpdate = -1;

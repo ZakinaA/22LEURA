@@ -8,6 +8,7 @@
 <link rel ="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"/> 
 <%@page import="model.Festival"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include  file="../outils/header.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -56,45 +57,7 @@
 
 </tbody>
 </table>
+    </body>
+    <%@include  file="../outils/footer.jsp" %>
+    </html>
 
-<%
-    Groupe unGroupe = (Groupe)request.getAttribute("pGroupe");
-%>
-
-<br/>
-<br/> 
-<h2>Inscription Groupe</h2>
-<br/>
-<br/> 
-    <table  class="table table-bordered table-striped table-condensed">
-        <thead>
-            <tr>
-                <th>NumeroGroupe</th>
-                <th>Nom du groupe</th>
-                <th>Genre</th>
-            </tr>
-        </thead>
-        <tbody>
-        <tr>
-        
-<%
-/*
-    out.println("<td>");
-    out.println(unGroupe.getId());
-    out.println("<br/> <br/>");
-    
-    out.println("<td>");
-    out.println(unGroupe.getNom());
-    out.println("<br/> <br/>");
-    
-    out.println("<td>");
-    out.println(unGroupe.getGenre().getLibelle());
-    out.println("<br/> <br/>");
-*/
-%>
-            
-
-        </tr>
-        </tbody>
-        
-</table>
