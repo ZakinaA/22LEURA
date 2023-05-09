@@ -63,6 +63,10 @@
         <url-pattern>/ServletInscription/inscription</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>ServletInscription</servlet-name>
+        <url-pattern>/ServletInscription/connexion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ServletConnexion</servlet-name>
         <url-pattern>/ServletConnexion/connexion</url-pattern>
     </servlet-mapping>

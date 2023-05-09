@@ -65,7 +65,7 @@ public class DaoUtilisateur {
     public static Utilisateur ajouterUtilisateur (Connection connection, Utilisateur unUtilisateur){
         int idGenere = -1;
         try{
-            requete=connection.prepareStatement("INSERT INTO UTILISATEUR ( utilisateur.username, utilisateur.password,Utilisateur.mail,Utilisateur.tel,Utilisateur.rue,Utilisateur.ville,Utilisateur.cp, utilisateur.categorie) VALUES (?,?,?,?,?,?,?,?)", requete.RETURN_GENERATED_KEYS );
+            requete=connection.prepareStatement("INSERT INTO utilisateur ( utilisateur.username, utilisateur.password,utilisateur.mail,utilisateur.tel,utilisateur.rue,utilisateur.ville,utilisateur.cp, utilisateur.categorie) VALUES (?,?,?,?,?,?,?,?)", requete.RETURN_GENERATED_KEYS );
             requete.setString(1, unUtilisateur.getUsername());
             requete.setString(2, unUtilisateur.getPassword());
             requete.setString(3, unUtilisateur.getMail());
