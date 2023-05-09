@@ -165,7 +165,7 @@
 <body>
   <header class="header">
     <!--<a href="#" class="logo">Norman'zik</a>-->
-    <a href="../../normanzik/"> <img src="http://172.20.177.250/LEURA/img/Normanzik.png" alt="normanzik" width="60"/> </a>
+        <a href="../../normanzik" class="logo">Norman'zik</a>
     <nav class="nav-items">
       <a href="../../normanzik/ServletGroupe/lister">Groupe</a>
       <a href="../../normanzik/ServletFestival/listerFestival">Festival</a>
