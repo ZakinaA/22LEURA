@@ -6,6 +6,7 @@
 <%@page import="form.FormUtilisateur"%>
 <link rel ="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"/> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include  file="../outils/header.jsp" %>
 <!DOCTYPE html>
 <html>
     
@@ -42,14 +43,6 @@
         <title>Inscription</title>
     </head>
     <body>
-          <header class="header">
-    <a href="../" class="logo">Normanzik</a>
-    <nav class="nav-items">
-      <a href="../ServletGroupe/lister">Groupe</a>
-      <a href="../ServletGroupe/festival">Festival</a>
-      <a href="../ServletConnexion/connexion">Se connecter</a>
-    </nav>
-  </header>
         
 
     <body>
